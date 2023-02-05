@@ -1,0 +1,91 @@
+﻿@page "/"
+
+<h1>High and Low</h1>
+
+<div class="d-flex flex-row justify-content-around">
+	<div class="container">
+		<TrumpTemplate></TrumpTemplate>
+	</div>
+	<div class="container">
+		<TrumpTemplate></TrumpTemplate>
+	</div>
+</div>
+
+<div class="d-flex flex-column">
+	<div class="flex-row justify-content-around my-5">
+		<TelerikRadioGroup
+			Data="@HighAndLow"
+			@bind-Value="@ChosenHighAndLow"
+			ValueField="@nameof(ChosenType)"
+			TextField="@nameof(ChosenType)"
+			Class="fs-6">
+		</TelerikRadioGroup>
+	</div>
+	<div class="flex-column justify-content-center my-5">
+		<div class="justify-content-center d-inline-flex">
+			<button type="button" @onclick="OnClickedJudgeButton" class="btn btn-primary" hidden=@judgeButtonEnabled>勝負！</button>
+		</div>
+		<div class="justify-content-center d-inline-flex">
+			<p>@message</p>
+		</div>
+		<div class="justify-content-center d-inline-flex">
+			<button type="button" @onclick="OnClickedRetryGameButton" class="btn btn-secondary" hidden=@retryGameButtonEnabled>再戦</button>
+		</div>
+	</div>
+</div>
+
+@code
+{
+	private enum ChosenType
+	{
+		HIGH,
+		LOW
+	}
+	private TelerikRadioGroup<ChosenType, int?> RadioGroupRef { get; set; }
+	private int ChosenHighAndLow { get; set; }
+	private List<ChosenType> HighAndLow { get; set; } = new List<ChosenType>
+	{
+		ChosenType.HIGH,
+		ChosenType.LOW
+	};
+
+
+	private GameController gameController = new GameController();
+	private bool judgeButtonEnabled = false;
+	private bool retryGameButtonEnabled = true;
+	private string message = "";
+
+	private void OnClickedJudgeButton(EventArgs e)
+	{
+		int gameResult = gameController.JudgeCards();
+		if (gameResult == 1)
+			{
+			message = "Win";
+		} else if (gameResult == -1)
+			{
+			message = "Lose";
+		} else if (gameResult == 0 )
+			{
+			message = "Draw";
+		} else {
+			string errorMessage = "Unexpect GameResult value.";
+			message = errorMessage;
+			throw new InvalidProgramException(errorMessage);
+		}
+
+		this.judgeButtonEnabled = true;
+		this.retryGameButtonEnabled = false;
+	}
+
+	private void OnClickedRetryGameButton(EventArgs e)
+	{
+		var Cards = gameController.GenerateCards();
+		this.judgeButtonEnabled = false;
+		this.retryGameButtonEnabled = true;
+	}
+
+	protected override void OnInitialized()
+	{
+		var Cards = gameController.GenerateCards();
+	}
+}
