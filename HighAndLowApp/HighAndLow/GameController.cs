@@ -6,7 +6,7 @@ namespace HighAndLowApp.HighAndLow
 	{
 		private Trump enemyCard = new Trump();
 		private Trump myCard = new Trump();
-
+		private int winningCount = 0;
 
 		public (Trump? enemyCard, Trump? myCard) GenerateCards()
 		{
@@ -15,10 +15,11 @@ namespace HighAndLowApp.HighAndLow
 			int enemyNumber = r.Next(1, 13);
 			int myMark = r.Next(0, 4);
 			int myNumber = r.Next(1, 13);
-			while ((enemyMark == myMark) && (enemyNumber == myNumber))
+			while ((enemyNumber == myNumber))
 			{
                 myMark = r.Next(0, 4);
                 myNumber = r.Next(1, 13);
+				if (enemyMark != myMark && enemyNumber == myNumber) break;
 			}
 
 			enemyCard = new Trump()
@@ -35,32 +36,47 @@ namespace HighAndLowApp.HighAndLow
 			return (enemyCard, null);
 		}
 
+		public (Trump enemyCard, Trump? myCard) GenerateCards(int i, int j)
+		{
+			enemyCard = new Trump()
+			{
+				Mark = (TrumpMark)i,
+				Number = (TrumpNumber)j
+			};
+			return (enemyCard, null);
+		}
+
 		public (Trump enemyCard, Trump myCard) OpenCards()
 		{
 			return (enemyCard, myCard);
 		}
 
-		public bool JudgeCards(HighAndLow highAndLow)
+		public (bool isWin, int winningCount) JudgeCards(HighAndLow highAndLow)
 		{
+			bool f = true;
 			if (highAndLow == HighAndLow.LOW)
-			{
-				if (enemyCard.Number > myCard.Number)
-				{
-					return true;
-				} else
-				{
-					return false;
-				}
-			} else
 			{
 				if (enemyCard.Number < myCard.Number)
 				{
-					return true;
-				} else
+					f = false;
+				}
+			} else
+			{
+				if (enemyCard.Number > myCard.Number)
 				{
-					return false;
+					f = false;
 				}
 			}
+
+			if (f)
+			{
+				winningCount++;
+			} else
+			{
+				winningCount = 0;
+			}
+
+			return (f, winningCount);
 		}
 
 		public enum HighAndLow

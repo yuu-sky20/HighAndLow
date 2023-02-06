@@ -6,6 +6,12 @@
 	<TrumpTemplate Card="Cards.enemyCard" />
 	<TrumpTemplate Card="Cards.myCard" />
 </div>
+<br />
+<div class="text-center mx-auto">
+	<label class="fs-5">Winning: @winningCount</label>
+	<br />
+	<label class="fs-1">@message</label>
+</div>
 
 <div class="d-flex flex-column justify-content-center">
 	<div class="d-flex flex-row justify-content-around my-5">
@@ -21,9 +27,6 @@
 	<div class="d-flex flex-column justify-content-center my-5">
 		<div class="justify-content-center d-inline-flex">
 			<button type="button" @onclick="OnClickedJudgeButton" class="btn btn-primary" hidden=@judgeButtonEnabled>DUEL</button>
-		</div>
-		<div class="justify-content-center d-inline-flex">
-			<p>@message</p>
 		</div>
 		<div class="justify-content-center d-inline-flex">
 			<button type="button" @onclick="OnClickedRetryGameButton" class="btn btn-secondary" hidden=@retryGameButtonEnabled>Retry</button>
@@ -45,6 +48,7 @@
 	private GameController gameController = new GameController();
 	private bool judgeButtonEnabled = false;
 	private bool retryGameButtonEnabled = true;
+	private int winningCount = 0;
 	private string message = "";
 
 	public (TrumpModel.Trump? enemyCard, TrumpModel.Trump? myCard) Cards { get; set; }
@@ -54,7 +58,8 @@
 		this.Cards = gameController.OpenCards();
 		this.judgeButtonEnabled = true;
 		this.retryGameButtonEnabled = false;
-		if (gameController.JudgeCards((GameController.HighAndLow)ChosenHighAndLow))
+		(bool f, winningCount) = gameController.JudgeCards((GameController.HighAndLow)ChosenHighAndLow);
+		if (f)
 		{
 			this.message = "Win!";
 		} else

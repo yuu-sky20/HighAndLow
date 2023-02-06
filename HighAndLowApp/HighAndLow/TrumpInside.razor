@@ -1,11 +1,360 @@
 ﻿<div class="d-flex text-center justify-content-between">
 	<div class="d-flex justify-content-center w-100">
-		@Card.Mark
-		@Card.Number
+		@switch (Card.Number)
+		{
+			case TrumpModel.TrumpNumber.One:
+				<div class="container fs-1">
+					<label>@Mark</label>
+				</div>
+				break;
+			case TrumpModel.TrumpNumber.Two:
+				<div class="d-grid fs-2 gap-5">
+					<div class="col">
+						<label>@Mark</label>
+					</div>
+					<div class="col">
+						<label></label>
+					</div>
+					<div class="col" style="@ReverseStyle">
+						<label>@Mark</label>
+					</div>
+				</div>
+				break;
+			case TrumpModel.TrumpNumber.Three:
+				<div class="d-grid fs-2 gap-5">
+					<div class="col">
+						<label>@Mark</label>
+					</div>
+					<div class="col" style="@ReverseStyle">
+						<label>@Mark</label>
+					</div>
+					<div class="col" style="@ReverseStyle">
+						<label>@Mark</label>
+					</div>
+				</div>
+				break;
+			case TrumpModel.TrumpNumber.Four:
+				<div class="d-grid fs-2 gap-5">
+					<div class="row gap-5">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col">
+							<label></label>
+						</div>
+						<div class="col">
+							<label></label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col">
+							<label></label>
+						</div>
+						<div class="col">
+							<label></label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+				</div>
+				break;
+			case TrumpModel.TrumpNumber.Five:
+				<div class="d-grid fs-2 gap-4">
+					<div class="row gap-5">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label></label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label></label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+				</div>
+				break;
+			case TrumpModel.TrumpNumber.Six:
+				<div class="d-grid fs-2 gap-3">
+					<div class="row gap-5">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label></label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label></label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+				</div>
+				break;
+			case TrumpModel.TrumpNumber.Seven:
+				<div class="d-grid fs-2 gap-4">
+					<div class="row gap-5">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							@if (Card.Mark == TrumpModel.TrumpMark.s)
+							{
+								<label></label>
+							} else {
+								<label>@Mark</label>
+							}
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							@if (Card.Mark == TrumpModel.TrumpMark.s)
+							{
+								<label style="@ReverseStyle">@Mark</label>
+							} else {
+								<label></label>
+							}
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+				</div>
+				break;
+			case TrumpModel.TrumpNumber.Eight:
+				<div class="d-grid fs-2 gap-4">
+					<div class="row gap-5">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+				</div>
+				break;
+			case TrumpModel.TrumpNumber.Nine:
+				<div class="d-grid fs-2">
+					<div class="row gap-5">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label></label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label></label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+				</div>
+				break;
+			case TrumpModel.TrumpNumber.Ten:
+				<div class="d-grid fs-2">
+					<div class="row gap-5">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+						<div class="col">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label></label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+					<div class="row gap-5">
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+						<div class="col" style="@ReverseStyle">
+							<label>@Mark</label>
+						</div>
+					</div>
+				</div>
+				break;
+			case TrumpModel.TrumpNumber.Eleven:
+			case TrumpModel.TrumpNumber.Twelve:
+			case TrumpModel.TrumpNumber.Thirteen:
+				<div class="container fs-1">
+					<label>@Number</label>
+				</div>
+				break;
+			default:
+				break;
+		}
 	</div>
 </div>
 
 @code {
 	[Parameter]
 	public TrumpModel.Trump Card { get; set; }
+
+	private string Mark;
+	private string Number;
+
+	private string ReverseStyle = "transform: rotate(180deg);";
+
+	protected override void OnParametersSet()
+	{
+		Mark = Card.PrintMark();
+		Number = Card.PrintNumberSpecial();
+	}
 }

@@ -24,7 +24,6 @@ namespace HighAndLowApp.HighAndLow
                     default:
                         string errorMessage = "Unexpect output string";
                         throw new MissingMemberException(errorMessage);
-                        return errorMessage;
                 }
             }
 
@@ -51,15 +50,30 @@ namespace HighAndLowApp.HighAndLow
                     case TrumpNumber.Nine:
                         return "9";
                     case TrumpNumber.Ten:
-                        return "J";
+                        return "10";
                     case TrumpNumber.Eleven:
-                        return "Q";
+                        return "J";
                     case TrumpNumber.Twelve:
+                        return "Q";
+                    case TrumpNumber.Thirteen:
                         return "K";
                     default:
                         string errorMessage = "Unexpect output string";
                         throw new MissingMemberException(errorMessage);
-                        return errorMessage;
+                }
+            }
+            public string PrintNumberSpecial()
+            {
+                switch (Number)
+                {
+                    case TrumpNumber.Eleven:
+                        return "JACK";
+                    case TrumpNumber.Twelve:
+                        return "QUEEN";
+                    case TrumpNumber.Thirteen:
+                        return "KING";
+                    default:
+                        return PrintNumber();
                 }
             }
         }
@@ -85,7 +99,8 @@ namespace HighAndLowApp.HighAndLow
             Nine = 9,
             Ten = 10,
             Eleven = 11,
-            Twelve = 12
+            Twelve = 12,
+            Thirteen = 13
         };
 	}
 }
