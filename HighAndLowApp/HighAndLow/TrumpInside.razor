@@ -1,5 +1,11 @@
-﻿<h3>TrumpInside</h3>
+﻿<div class="d-flex text-center justify-content-between">
+	<div class="d-flex justify-content-center w-100">
+		@Card.Mark
+		@Card.Number
+	</div>
+</div>
 
 @code {
-
+	[Parameter]
+	public TrumpModel.Trump Card { get; set; }
 }

@@ -1,0 +1,11 @@
+﻿<div class="d-flex text-start flex-column justify-content-end"  style="transform: rotate(180deg);">
+	<div class="d-flex flex-column justify-content-start text-center w-25">
+		<label class="fs-5 fw-bold">@Card.PrintNumber()</label>
+		<label class="fs-5 fw-bold">@Card.PrintMark()</label>
+	</div>
+</div>
+
+@code {
+	[Parameter]
+	public TrumpModel.Trump Card { get; set; }
+}

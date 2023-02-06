@@ -1,27 +1,65 @@
-﻿namespace HighAndLowApp.HighAndLow
+﻿using System.Runtime.CompilerServices;
+
+namespace HighAndLowApp.HighAndLow
 {
 	public class TrumpModel
 	{
-        public class Trump : IComparer<Trump>
+        public class Trump
         {
             public TrumpMark Mark { get; set; }
             public TrumpNumber Number { get; set; }
 
-            public int Compare(Trump? a, Trump? b)
+            public string PrintMark()
             {
-                if (a == null || b == null)
+                switch (Mark)
                 {
-                    return 2;
+                    case TrumpMark.s:
+                        return "♤";
+                    case TrumpMark.h:
+                        return "♡";
+                    case TrumpMark.c:
+                        return "♧";
+                    case TrumpMark.d:
+                        return "♤";
+                    default:
+                        string errorMessage = "Unexpect output string";
+                        throw new MissingMemberException(errorMessage);
+                        return errorMessage;
                 }
-                if (a.Number > b.Number)
+            }
+
+            public string PrintNumber()
+            {
+                switch (Number)
                 {
-                    return 1;
-                } else if (a.Number < b.Number)
-                {
-                    return -1;
-                } else
-                {
-                    return 0;
+                    case TrumpNumber.One:
+                        return "A";
+                    case TrumpNumber.Two:
+                        return "2";
+                    case TrumpNumber.Three:
+                        return "3";
+                    case TrumpNumber.Four:
+                        return "4";
+                    case TrumpNumber.Five:
+                        return "5";
+                    case TrumpNumber.Six:
+                        return "6";
+                    case TrumpNumber.Seven:
+                        return "7";
+                    case TrumpNumber.Eight:
+                        return "8";
+                    case TrumpNumber.Nine:
+                        return "9";
+                    case TrumpNumber.Ten:
+                        return "J";
+                    case TrumpNumber.Eleven:
+                        return "Q";
+                    case TrumpNumber.Twelve:
+                        return "K";
+                    default:
+                        string errorMessage = "Unexpect output string";
+                        throw new MissingMemberException(errorMessage);
+                        return errorMessage;
                 }
             }
         }
@@ -36,7 +74,7 @@
 
         public enum TrumpNumber
         {
-            A = 1,
+            One = 1,
             Two = 2,
             Three = 3,
             Four = 4,
@@ -45,9 +83,9 @@
             Seven = 7,
             Eight = 8,
             Nine = 9,
-            J = 10,
-            Q = 11,
-            K = 12
+            Ten = 10,
+            Eleven = 11,
+            Twelve = 12
         };
 	}
 }

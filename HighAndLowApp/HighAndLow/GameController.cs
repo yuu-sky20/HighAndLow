@@ -8,7 +8,7 @@ namespace HighAndLowApp.HighAndLow
 		private Trump myCard = new Trump();
 
 
-		public (Trump enemyCard, Trump myCard) GenerateCards()
+		public (Trump? enemyCard, Trump? myCard) GenerateCards()
 		{
 			Random r = new Random();
 			int enemyMark = r.Next(0, 4);
@@ -32,24 +32,41 @@ namespace HighAndLowApp.HighAndLow
 				Number = (TrumpNumber)myNumber
 			};
 
+			return (enemyCard, null);
+		}
+
+		public (Trump enemyCard, Trump myCard) OpenCards()
+		{
 			return (enemyCard, myCard);
 		}
 
-		public int JudgeCards()
+		public bool JudgeCards(HighAndLow highAndLow)
 		{
-			if (enemyCard.Number < myCard.Number)
+			if (highAndLow == HighAndLow.LOW)
 			{
-				return 1;
-			} else if (enemyCard.Number > myCard.Number)
-			{
-				return -1;
-			} else if (enemyCard == myCard)
-			{
-				return 0;
+				if (enemyCard.Number > myCard.Number)
+				{
+					return true;
+				} else
+				{
+					return false;
+				}
 			} else
 			{
-				return 2;
+				if (enemyCard.Number < myCard.Number)
+				{
+					return true;
+				} else
+				{
+					return false;
+				}
 			}
+		}
+
+		public enum HighAndLow
+		{
+			LOW,
+			HIGH
 		}
 	}
 }

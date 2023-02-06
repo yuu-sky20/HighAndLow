@@ -1,10 +1,17 @@
-﻿<div class="container">
-	<div class="d-flex">
-		<TrumpOutside></TrumpOutside>
-		<TrumpInside></TrumpInside>
-	</div>
+﻿<div style="min-height: 15vw; width: 10vw">
+	@if (Card == null) {
+		<div class="border border-2 border-dark p-2 h-100 bg-secondary">
+		</div>
+	} else {
+		<div class="border border-2 border-dark p-2 h-100 d-flex justify-content-between flex-column">
+			<TrumpTopCover Card="Card" />
+			<TrumpInside Card="Card" />
+			<TrumpBottomCover Card="Card" />
+		</div>
+	}
 </div>
 
 @code {
-	
+	[Parameter]
+	public TrumpModel.Trump? Card { get; set; }
 }
