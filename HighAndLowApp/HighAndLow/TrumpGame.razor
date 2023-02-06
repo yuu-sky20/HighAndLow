@@ -1,11 +1,21 @@
 ﻿@page "/"
 
+<TelerikMediaQuery Media="(max-width: 600px)" OnChange="((changed) => Mobile = changed)"></TelerikMediaQuery>
+
 <h1>High and Low</h1>
 
-<div class="d-flex flex-row justify-content-around">
-	<TrumpTemplate Card="Cards.enemyCard" />
-	<TrumpTemplate Card="Cards.myCard" />
-</div>
+@if (Mobile) {
+	<div class="d-flex flex-column gap-2">
+		<TrumpTemplate Mobile="Mobile" Card="Cards.enemyCard" />
+		<TrumpTemplate Mobile="Mobile" Card="Cards.myCard" />
+	</div>
+} else {
+	<div class="d-flex flex-row gap-2">
+		<TrumpTemplate Mobile="Mobile" Card="Cards.enemyCard" />
+		<TrumpTemplate Mobile="Mobile" Card="Cards.myCard" />
+	</div>
+}
+
 <br />
 <div class="text-center mx-auto">
 	<label class="fs-5">Winning: @winningCount</label>
@@ -24,7 +34,7 @@
 			Layout="RadioGroupLayout.Horizontal">
 		</TelerikRadioGroup>
 	</div>
-	<div class="d-flex flex-column justify-content-center my-5">
+	<div class="d-flex flex-column justify-content-center mb-5">
 		<div class="justify-content-center d-inline-flex">
 			<button type="button" @onclick="OnClickedJudgeButton" class="btn btn-primary" hidden=@judgeButtonEnabled>DUEL</button>
 		</div>
@@ -36,6 +46,8 @@
 
 @code
 {
+	public bool Mobile { get; set; }
+
 	private TelerikRadioGroup<GameController.HighAndLow, int?> RadioGroupRef { get; set; }
 	private int ChosenHighAndLow { get; set; }
 	private List<GameController.HighAndLow> HighAndLow { get; set; } = new List<GameController.HighAndLow>

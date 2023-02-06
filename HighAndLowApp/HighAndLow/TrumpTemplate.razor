@@ -1,17 +1,35 @@
-﻿<div style="min-height: 25vw; width: 15vw">
-	@if (Card == null) {
-		<div class="border border-2 border-dark p-2 h-100 bg-secondary">
-		</div>
-	} else {
-		<div class="border border-2 border-dark p-2 h-100 d-flex justify-content-between flex-column">
-			<TrumpTopCover Card="Card" />
-			<TrumpInside Card="Card" />
-			<TrumpBottomCover Card="Card" />
-		</div>
-	}
-</div>
+﻿@if (Mobile) {
+	<div class="mx-auto w-100">
+			@if (Card == null) {
+				<div class="border border-2 border-dark p-2 bg-secondary d-flex" style="min-height: 500px">
+				</div>
+			} else {
+				<div class="border border-2 border-dark p-2 d-flex justify-content-between flex-column d-flex" style="min-height: 500px">
+					<TrumpTopCover Card="Card" />
+					<TrumpInside Card="Card" />
+					<TrumpBottomCover Card="Card" />
+				</div>
+			}
+	</div>
+} else {
+	<div class="mx-auto" style="width: 30%;">
+			@if (Card == null) {
+				<div class="border border-2 border-dark p-2 h-100 bg-secondary d-flex" style="min-height: 600px">
+				</div>
+			} else {
+				<div class="border border-2 border-dark p-2 h-100 d-flex justify-content-between flex-column d-flex" style="min-height: 600px">
+					<TrumpTopCover Card="Card" />
+					<TrumpInside Card="Card" />
+					<TrumpBottomCover Card="Card" />
+				</div>
+			}
+	</div>
+}
 
 @code {
 	[Parameter]
 	public TrumpModel.Trump? Card { get; set; }
+
+	[Parameter]
+	public bool Mobile { get; set; }
 }
